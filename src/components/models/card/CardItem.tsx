@@ -1,37 +1,25 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import ImageListItem from '@mui/material/ImageListItem';
 
-import Card from 'core/domain/values/Card';
+import Card from 'core/values/Card';
 
 type props = {
   card: Card;
+  handleCardItemClick: (card: Card) => void;
 };
 
 const BACK_IMAGE_SRC = '/cards/back.png';
 
 const CardItem = (props: props) => {
-  const [src, setSrc] = useState<string>(BACK_IMAGE_SRC);
-
-  const reverse = (card: Card) => {
-    return card.isFornt ? faseDown(card) : faceUp(card);
-  };
-
-  const faceUp = (card: Card) => {
-    card.faceUp();
-    setSrc(`/cards/${props.card.type}/${props.card.number}.png`);
-  };
-
-  const faseDown = (card: Card) => {
-    card.faceDown();
-    setSrc(BACK_IMAGE_SRC);
-  };
-
   return (
     <ImageListItem key={`${props.card.type}${props.card.number}`}>
       <Image
-        onClick={() => reverse(props.card)}
-        src={src}
+        onClick={() => props.handleCardItemClick(props.card)}
+        src={
+          props.card.isFornt
+            ? `/cards/${props.card.type}/${props.card.number}.png`
+            : BACK_IMAGE_SRC
+        }
         alt="Card"
         layout="fill"
       />

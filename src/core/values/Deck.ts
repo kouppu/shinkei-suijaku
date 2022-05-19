@@ -1,6 +1,6 @@
-import Card from 'core/domain/values/Card';
+import Card from 'core/values/Card';
 
-export default class CardList {
+export default class Deck {
   // ジョーカーは使用しないので52枚
   readonly MAX_CARD_LENGTH = 52;
   readonly cards: Card[];
@@ -16,7 +16,7 @@ export default class CardList {
   public add(card: Card) {
     const addedCards = this.cards.concat(card);
 
-    return new CardList(addedCards);
+    return new Deck(addedCards);
   }
 
   public remove(card: Card) {
@@ -29,13 +29,43 @@ export default class CardList {
       return index != removeIndex;
     });
 
-    return new CardList(removedCards);
+    return new Deck(removedCards);
   }
 
   public shuffle() {
     const shuffledCard = this.shuffleArray(this.cards);
 
-    return new CardList(shuffledCard);
+    return new Deck(shuffledCard);
+  }
+
+  public faceUpCard(card: Card) {
+    const targetIndex = this.findIndexOfCard(card);
+    if (targetIndex == -1) {
+      throw 'Not find card in cards';
+    }
+    this.cards[targetIndex] = card.faceUp();
+
+    return new Deck(this.cards);
+  }
+
+  public faceDownCard(card: Card) {
+    const targetIndex = this.findIndexOfCard(card);
+    if (targetIndex == -1) {
+      throw 'Not find card in cards';
+    }
+    this.cards[targetIndex] = card.faceDown();
+
+    return new Deck(this.cards);
+  }
+
+  private findIndexOfCard(card: Card) {
+    let foundIndex = -1;
+    this.cards.forEach((value, index) => {
+      if (!value.equal(card)) return;
+      foundIndex = index;
+    });
+
+    return foundIndex;
   }
 
   private shuffleArray(arr: Card[]): Card[] {

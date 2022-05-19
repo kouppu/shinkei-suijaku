@@ -6,15 +6,20 @@ export default class Card {
 
   readonly type: CARD_TYPE;
   readonly number: number;
-  public isFornt: boolean = false;
+  public isFornt: boolean;
 
-  constructor(type: CARD_TYPE, number: number) {
+  constructor(type: CARD_TYPE, number: number, isFront: boolean = true) {
     if (Card.MIN_NUMBER > number || Card.MAX_NUMBER < number) {
       throw 'Number is invalid.';
     }
 
     this.type = type;
     this.number = number;
+    this.isFornt = isFront;
+  }
+
+  public equal(other: Card) {
+    return this.number == other.number && this.type == other.type;
   }
 
   public equalNumber(other: Card) {
@@ -22,14 +27,10 @@ export default class Card {
   }
 
   public faceUp() {
-    this.isFornt = true;
-
-    return this.isFornt;
+    return new Card(this.type, this.number, true);
   }
 
   public faceDown() {
-    this.isFornt = false;
-
-    return this.isFornt;
+    return new Card(this.type, this.number, false);
   }
 }

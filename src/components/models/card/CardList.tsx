@@ -35,6 +35,7 @@ const CardList = () => {
   const firstSelecte = (card: Card) => {
     if (isWaiting) return;
     if (!turn.isCurrentMove('first')) return;
+    if (card.isFornt) return;
 
     setFirstSelectedCard(card);
     faceUpCard(card);
@@ -44,6 +45,7 @@ const CardList = () => {
   const secondSelect = (card: Card) => {
     if (isWaiting) return;
     if (!turn.isCurrentMove('second')) return;
+    if (card.isFornt) return;
     if (!firstSelectedCard) return;
     // 同じカードを選択した場合
     if (firstSelectedCard.equal(card)) return;

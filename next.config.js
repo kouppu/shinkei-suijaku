@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
+const urlPrefix = process.env.URL_PREFIX ? '/' + process.env.URL_PREFIX : ''
+
 const nextConfig = {
   reactStrictMode: true,
-  basePath: process.env.GITHUB_ACTIONS ? "/shinkei-suijaku" : "",
+  assetPrefix: urlPrefix,
+  basePath: urlPrefix,
   trailingSlash: true,
 }
 

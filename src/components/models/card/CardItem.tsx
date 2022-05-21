@@ -18,7 +18,7 @@ const CardItem = (props: props) => {
       <img
         onClick={() => props.handleCardItemClick(props.card)}
         src={
-          props.card.isFornt
+          props.card.isFront
             ? url(`/cards/${props.card.type}/${props.card.number}.png`)
             : url(BACK_IMAGE_SRC)
         }

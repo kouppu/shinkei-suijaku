@@ -6,7 +6,7 @@ export default class Card {
 
   readonly type: CARD_TYPE;
   readonly number: number;
-  public isFornt: boolean;
+  public isFront: boolean;
 
   constructor(type: CARD_TYPE, number: number, isFront: boolean = true) {
     if (Card.MIN_NUMBER > number || Card.MAX_NUMBER < number) {
@@ -15,7 +15,7 @@ export default class Card {
 
     this.type = type;
     this.number = number;
-    this.isFornt = isFront;
+    this.isFront = isFront;
   }
 
   public equal(other: Card) {

@@ -5,6 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   assetPrefix: urlPrefix,
   basePath: urlPrefix,
+  publicRuntimeConfig: { urlPrefix },
   trailingSlash: true,
 }
 

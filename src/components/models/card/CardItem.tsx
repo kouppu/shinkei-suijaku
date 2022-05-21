@@ -1,6 +1,7 @@
 import ImageListItem from '@mui/material/ImageListItem';
 
 import Card from 'core/values/Card';
+import { url } from 'utils/config';
 
 type props = {
   card: Card;
@@ -18,8 +19,8 @@ const CardItem = (props: props) => {
         onClick={() => props.handleCardItemClick(props.card)}
         src={
           props.card.isFornt
-            ? `/cards/${props.card.type}/${props.card.number}.png`
-            : BACK_IMAGE_SRC
+            ? url(`/cards/${props.card.type}/${props.card.number}.png`)
+            : url(BACK_IMAGE_SRC)
         }
         alt="Card"
         loading="lazy"

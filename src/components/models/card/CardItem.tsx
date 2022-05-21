@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import ImageListItem from '@mui/material/ImageListItem';
 
 import Card from 'core/values/Card';
@@ -11,9 +10,11 @@ type props = {
 const BACK_IMAGE_SRC = '/cards/back.png';
 
 const CardItem = (props: props) => {
+  /* eslint-disable @next/next/no-img-element */
+  // next export では next/image が使えないのでimgタグを使用する
   return (
     <ImageListItem key={`${props.card.type}${props.card.number}`}>
-      <Image
+      <img
         onClick={() => props.handleCardItemClick(props.card)}
         src={
           props.card.isFornt
@@ -21,7 +22,7 @@ const CardItem = (props: props) => {
             : BACK_IMAGE_SRC
         }
         alt="Card"
-        layout="fill"
+        loading="lazy"
       />
     </ImageListItem>
   );

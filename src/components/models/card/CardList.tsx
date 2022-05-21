@@ -85,7 +85,7 @@ const CardList = () => {
   };
 
   return (
-    <ImageList sx={{ width: 1200, height: 500 }} cols={13}>
+    <ImageList sx={{ width: 1200 }} cols={13}>
       {deck.cards.map((card) => (
         <CardItem
           card={card}

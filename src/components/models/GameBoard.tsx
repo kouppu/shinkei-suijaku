@@ -1,17 +1,25 @@
 import { useEffect, useState } from 'react';
 import MuiCard from '@mui/material/Card';
-import { CardContent as MuiCardContent } from '@mui/material';
+import MuiCardActions from '@mui/material/CardActions';
+import MuiCardContent from '@mui/material/CardContent';
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import SportsScoreIcon from '@mui/icons-material/SportsScore';
+import { green } from '@mui/material/colors';
 
 import Card from 'core/values/Card';
 import Deck from 'core/values/Deck';
 import Turn from 'core/values/Turn';
+import PlayerPoint from 'core/values/PlayerPoint';
 import { CARD_TYPE_VALUES } from 'core/types/CardType';
 import CardList from './card/CardList';
-import { green } from '@mui/material/colors';
 
 const GameBoard = () => {
   const [turn, setTurn] = useState<Turn>(new Turn('first'));
   const [deck, setDeck] = useState<Deck>(new Deck([]));
+  const [playerPoint, setPlayerPoint] = useState<PlayerPoint>(
+    new PlayerPoint(0)
+  );
   const [firstSelectedCard, setFirstSelectedCard] = useState<Card>();
   const [isWaiting, setIsWaiting] = useState<boolean>(false);
 
@@ -55,11 +63,14 @@ const GameBoard = () => {
     faceUpCard(card);
     setIsWaiting(true);
     setTimeout(() => {
-      if (!firstSelectedCard.equalNumber(card)) {
+      if (firstSelectedCard.equalNumber(card)) {
         // 1枚目と2枚目に選択したカードの番号が同じなら
+        setPlayerPoint(playerPoint.add(1));
+      } else {
         faceDownCard(firstSelectedCard);
         faceDownCard(card);
       }
+
       setTurn(turn.next());
       setIsWaiting(false);
     }, 1000);
@@ -91,6 +102,10 @@ const GameBoard = () => {
       <MuiCardContent>
         <CardList deck={deck} handleCardItemClick={selectCard} />
       </MuiCardContent>
+      <MuiCardActions>
+        <Box sx={{ flexGrow: 1 }} />
+        <Chip icon={<SportsScoreIcon />} label={playerPoint.value} />
+      </MuiCardActions>
     </MuiCard>
   );
 };

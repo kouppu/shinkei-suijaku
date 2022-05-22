@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Container from '@mui/material/Container';
 
-import CardList from 'components/models/card/CardList';
 import Header from 'components/Header';
+import GameBoard from 'components/models/GameBoard';
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +12,9 @@ const Home: NextPage = () => {
       </header>
       <main>
         <Container>
-          <CardList />
+          <section>
+            <GameBoard />
+          </section>
         </Container>
       </main>
     </>

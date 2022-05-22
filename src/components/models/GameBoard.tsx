@@ -87,7 +87,7 @@ const GameBoard = () => {
   };
 
   return (
-    <MuiCard sx={{ background: green[800], mt: 5 }}>
+    <MuiCard sx={{ background: green[900], mt: 5 }}>
       <MuiCardContent>
         <CardList deck={deck} handleCardItemClick={selectCard} />
       </MuiCardContent>

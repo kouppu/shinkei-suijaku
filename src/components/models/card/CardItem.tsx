@@ -10,7 +10,7 @@ type props = {
 
 const BACK_IMAGE_SRC = '/cards/back.png';
 
-const CardItem = (props: props) => {
+const CardItem = (props: props): JSX.Element => {
   /* eslint-disable @next/next/no-img-element */
   // next export では next/image が使えないのでimgタグを使用する
   return (

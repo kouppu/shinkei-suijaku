@@ -7,7 +7,7 @@ export default class Turn {
     this.move = move;
   }
 
-  public next() {
+  public next(): Turn {
     const index = MOVE_VALUES.indexOf(this.move);
     const nextMove = MOVE_VALUES[index + 1];
     if (nextMove == undefined) {
@@ -17,7 +17,7 @@ export default class Turn {
     return new Turn(nextMove);
   }
 
-  public isCurrentMove(move: MOVE) {
+  public isCurrentMove(move: MOVE): boolean {
     return this.move == move;
   }
 }

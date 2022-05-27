@@ -13,13 +13,13 @@ export default class Deck {
     this.cards = cards;
   }
 
-  public add(card: Card) {
+  public add(card: Card): Deck {
     const addedCards = this.cards.concat(card);
 
     return new Deck(addedCards);
   }
 
-  public remove(card: Card) {
+  public remove(card: Card): Deck | false {
     const removeIndex = this.cards.indexOf(card);
     if (removeIndex == -1) {
       return false;
@@ -32,13 +32,13 @@ export default class Deck {
     return new Deck(removedCards);
   }
 
-  public shuffle() {
+  public shuffle(): Deck {
     const shuffledCard = this.shuffleArray(this.cards);
 
     return new Deck(shuffledCard);
   }
 
-  public faceUpCard(card: Card) {
+  public faceUpCard(card: Card): Deck {
     const targetIndex = this.findIndexOfCard(card);
     if (targetIndex == -1) {
       throw 'Not find card in cards';
@@ -48,7 +48,7 @@ export default class Deck {
     return new Deck(this.cards);
   }
 
-  public faceDownCard(card: Card) {
+  public faceDownCard(card: Card): Deck {
     const targetIndex = this.findIndexOfCard(card);
     if (targetIndex == -1) {
       throw 'Not find card in cards';
@@ -58,7 +58,7 @@ export default class Deck {
     return new Deck(this.cards);
   }
 
-  private findIndexOfCard(card: Card) {
+  private findIndexOfCard(card: Card): number {
     let foundIndex = -1;
     this.cards.forEach((value, index) => {
       if (!value.equal(card)) return;

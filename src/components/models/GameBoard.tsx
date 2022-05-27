@@ -14,7 +14,7 @@ import PlayerPoint from 'core/values/PlayerPoint';
 import { CARD_TYPE_VALUES } from 'core/types/CardType';
 import CardList from './card/CardList';
 
-const GameBoard = () => {
+const GameBoard = (): JSX.Element => {
   const [turn, setTurn] = useState<Turn>(new Turn('first'));
   const [deck, setDeck] = useState<Deck>(new Deck([]));
   const [playerPoint, setPlayerPoint] = useState<PlayerPoint>(
@@ -27,7 +27,7 @@ const GameBoard = () => {
     setDeck(createShuffledDeck());
   }, []);
 
-  const selectCard = (card: Card) => {
+  const selectCard = (card: Card): void => {
     if (isWaiting) return;
 
     switch (turn.move) {
@@ -42,7 +42,7 @@ const GameBoard = () => {
     }
   };
 
-  const firstSelect = (card: Card) => {
+  const firstSelect = (card: Card): void => {
     if (isWaiting) return;
     if (!turn.isCurrentMove('first')) return;
     if (card.isFront) return;
@@ -52,7 +52,7 @@ const GameBoard = () => {
     setTurn(turn.next());
   };
 
-  const secondSelect = (card: Card) => {
+  const secondSelect = (card: Card): void => {
     if (isWaiting) return;
     if (!turn.isCurrentMove('second')) return;
     if (card.isFront) return;
@@ -76,15 +76,15 @@ const GameBoard = () => {
     }, 1000);
   };
 
-  const faceUpCard = (card: Card) => {
+  const faceUpCard = (card: Card): void => {
     setDeck(deck.faceUpCard(card));
   };
 
-  const faceDownCard = (card: Card) => {
+  const faceDownCard = (card: Card): void => {
     setDeck(deck.faceDownCard(card));
   };
 
-  const createShuffledDeck = () => {
+  const createShuffledDeck = (): Deck => {
     let deck: Deck = new Deck([]);
 
     for (const cardTypeValue of CARD_TYPE_VALUES) {

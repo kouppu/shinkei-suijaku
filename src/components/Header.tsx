@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import CasinoIcon from '@mui/icons-material/Casino';
 
-const Header = () => {
+const Header = (): JSX.Element => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">

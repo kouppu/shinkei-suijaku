@@ -9,7 +9,7 @@ type props = {
   handleCardItemClick: (card: Card) => void;
 };
 
-const CardList = (props: props) => {
+const CardList = (props: props): JSX.Element => {
   return (
     <ImageList cols={13}>
       {props.deck.cards.map((card) => (

@@ -10,7 +10,7 @@ export default class PlayerPoint {
     this.value = value;
   }
 
-  public add(value: number) {
+  public add(value: number): PlayerPoint {
     return new PlayerPoint(this.value + value);
   }
 }

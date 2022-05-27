@@ -18,19 +18,19 @@ export default class Card {
     this.isFront = isFront;
   }
 
-  public equal(other: Card) {
+  public equal(other: Card): boolean {
     return this.number == other.number && this.type == other.type;
   }
 
-  public equalNumber(other: Card) {
+  public equalNumber(other: Card): boolean {
     return this.number == other.number;
   }
 
-  public faceUp() {
+  public faceUp(): Card {
     return new Card(this.type, this.number, true);
   }
 
-  public faceDown() {
+  public faceDown(): Card {
     return new Card(this.type, this.number, false);
   }
 }

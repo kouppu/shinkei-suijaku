@@ -19,11 +19,11 @@ export default class Card {
   }
 
   public equal(other: Card): boolean {
-    return this.number == other.number && this.type == other.type;
+    return this.number === other.number && this.type === other.type;
   }
 
   public equalNumber(other: Card): boolean {
-    return this.number == other.number;
+    return this.number === other.number;
   }
 
   public faceUp(): Card {

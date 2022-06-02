@@ -21,7 +21,7 @@ export default class Deck {
 
   public remove(card: Card): Deck | false {
     const removeIndex = this.cards.indexOf(card);
-    if (removeIndex == -1) {
+    if (removeIndex === -1) {
       return false;
     }
 
@@ -40,7 +40,7 @@ export default class Deck {
 
   public faceUpCard(card: Card): Deck {
     const targetIndex = this.findIndexOfCard(card);
-    if (targetIndex == -1) {
+    if (targetIndex === -1) {
       throw 'Not find card in cards';
     }
     this.cards[targetIndex] = card.faceUp();
@@ -50,7 +50,7 @@ export default class Deck {
 
   public faceDownCard(card: Card): Deck {
     const targetIndex = this.findIndexOfCard(card);
-    if (targetIndex == -1) {
+    if (targetIndex === -1) {
       throw 'Not find card in cards';
     }
     this.cards[targetIndex] = card.faceDown();

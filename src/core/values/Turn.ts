@@ -10,7 +10,7 @@ export default class Turn {
   public next(): Turn {
     const index = MOVE_VALUES.indexOf(this.move);
     const nextMove = MOVE_VALUES[index + 1];
-    if (nextMove == undefined) {
+    if (nextMove === undefined) {
       return new Turn('first');
     }
 
@@ -18,6 +18,6 @@ export default class Turn {
   }
 
   public isCurrentMove(move: MOVE): boolean {
-    return this.move == move;
+    return this.move === move;
   }
 }

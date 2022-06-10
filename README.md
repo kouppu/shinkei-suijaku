@@ -1,4 +1,4 @@
 # shinkei-suijaku
 
-神経衰弱Webアプリケーション（製作中）  
+神経衰弱Webアプリケーション  
 https://suhrr.github.io/shinkei-suijaku/
